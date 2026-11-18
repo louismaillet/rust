@@ -5,6 +5,10 @@ fn main() {
 	temperature: 15.0,
 	ciel: Ciel::Clair,
     };
+    let meteo_dm_orleans = Meteo {
+        temperature: 11.0,
+        ciel: Ciel::Pluie(3.0),
+    };
     
     println!("Hello, world!");
 }
@@ -49,11 +53,14 @@ fn decrit_ciel(c: Ciel) -> &'static str {
 
 
 fn to_farenheit(t_celsius: f32) -> f32 {
-    t_celsius * 5.0 / 9.0
+    t_celsius * 9.0/5.0 + 32.0
 }
 
 fn que_porter(temperature: f32) -> &'static str {
-    if temperature < 0.0 {
+    if temperature < 10.0 {
+        return "un anorak";
+    }
+    else if temperature < 0.0 {
 	return "un bon manteau";
     } else if temperature < 15.0 {
 	return "un petit pull";
